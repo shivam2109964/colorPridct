@@ -117,6 +117,26 @@ class homePage extends StatelessWidget {
                           colors: [Colors.deepPurple, Colors.deepOrange],
                         ),
                       ),
+                      //Modify Seond Card
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            
+                            children: <Widget>[
+                              CircleAvatar(
+                                maxRadius: 110,
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: AssetImage(
+                                  'assets/images/homeImgTwo.png',
+                                ),
+                              ),
+                              Text("Start Game",style: TextStyle(fontSize: 30,color: Colors.white),)
+                            ],
+                          ),
+                          
+                        ],
+                      ),
                     ),
                   ),
                 ],
