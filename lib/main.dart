@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:strive/service%20-%201/src/screen/SignIn.dart';
+import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:strive/service%20-%201/src/utils/MediaQuary.dart';
+import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -10,24 +10,82 @@ class SignIn extends StatelessWidget {
     double screenHeight = ScreenSize.height(context);
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            height: screenHeight * 0.5,
-            width: screenWidth * 1,
-            decoration: const BoxDecoration(
-              color: Colors.white
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: screenHeight * 0.7,
+              width: screenWidth * 1,
+              decoration: const BoxDecoration(color: Colors.black),
+              child: Padding(
+                padding: const EdgeInsets.all(
+                  20,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "S T R I V E",
+                          style: TextStyle(
+                            fontSize: 45,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "Login to your Account",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                                labelText: "Email",
+                                border: OutlineInputBorder())),
+                        Padding(
+                          padding: EdgeInsets.only(top: 8.0),
+                          child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                labelText: "Password",
+                                border: OutlineInputBorder()),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: screenWidth * 0.4,
+                      height: screenHeight * 0.06,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: null,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-          Container(
-            height: screenHeight * 0.5,
-            width: screenWidth * 1,
-          decoration: const BoxDecoration(
-            color: Colors.white
-          ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
