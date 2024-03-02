@@ -56,17 +56,43 @@ class homePage extends StatelessWidget {
                 ),
                 //Move Forword after creating name and greeting
                 Padding(
-                  padding: EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 50),
                   child: Container(
-                      height: screenHeight * 0.25,
-                      width: screenWidth * 0.9,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                        gradient: LinearGradient(
-                          colors: [Colors.deepPurple, Colors.deepOrange],
+                    height: screenHeight * 0.25,
+                    width: screenWidth * 0.9,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          45,
                         ),
                       ),
-                      child: null),
+                      gradient: LinearGradient(
+                        colors: [Colors.deepPurple, Colors.deepOrange],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        //Inside Card a container for Money Value
+                        Container(
+                          width: screenWidth * 0.45,
+                          height: screenHeight * 0.24,
+                          decoration:
+                              const BoxDecoration(color: Colors.transparent),
+                          child: const Center(
+                            child: Text("₹5000 +", style: TextStyle(fontSize: 50, color: Colors.lightGreenAccent),),
+                          ),
+                        ),
+                        // Inside Card a container for Image
+                        Container(
+                          width: screenWidth * 0.45,
+                          height: screenHeight * 0.24,
+                          decoration: const BoxDecoration(color: Colors.transparent),
+                          child: Image.asset("assets/images/ruppes.png"),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

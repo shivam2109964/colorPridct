@@ -17,3 +17,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - assets/images/homeElem.png
+  - assets/images/homeImgTwo.png
+  - assets/images/money.png
+  - assets/images/cardMoney.png
+  - assets/images/ruppes.png
+    
+
