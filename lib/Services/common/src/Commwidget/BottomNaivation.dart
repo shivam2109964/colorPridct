@@ -22,32 +22,35 @@ class _BottomNaviState extends State<BottomNavi> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.circular(45),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            selectedItemColor: Colors.blue.shade500,
-            unselectedIconTheme: const IconThemeData(color: Colors.black),
-            iconSize: 35,
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.groups,
-                  ),
-                  label: 'Refer'),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.person,
-                  ),
-                  label: 'Profle'),
-            ],
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(10),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(45),
+            child: BottomNavigationBar(
+              backgroundColor: Colors.white,
+              selectedItemColor: Colors.blue.shade500,
+              unselectedIconTheme: const IconThemeData(color: Colors.black),
+              iconSize: 35,
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                    label: 'Home'),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.groups,
+                    ),
+                    label: 'Refer'),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.person,
+                    ),
+                    label: 'Profle'),
+              ],
+            ),
           ),
         ),
         body: _selectedIndex == 0 ? const homePage() : _selectedIndex == 1 ? const SignIn() : const SignUp(),

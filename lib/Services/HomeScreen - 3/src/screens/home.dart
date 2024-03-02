@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:strive/Services/ColorGameScreen/src/screen/ColorGameScreen.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
 class homePage extends StatelessWidget {
@@ -136,15 +137,28 @@ class homePage extends StatelessWidget {
                                   height: 50,
                                   width: 140,
                                   child: ElevatedButton(
-                                    style: ButtonStyle(iconColor:MaterialStateProperty.all(Colors.black)),
-                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                        iconColor: MaterialStateProperty.all(
+                                            Colors.black)),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ColorGame(),
+                                        ),
+                                      );
+                                    },
                                     child: const Row(
                                       children: [
-                                       Icon(Icons.gamepad_outlined),
+                                        Icon(Icons.gamepad_outlined),
                                         Padding(
                                           padding: EdgeInsets.only(left: 20),
                                           child: Text(
-                                            "Play",style: TextStyle(fontSize: 18, color: Colors.black),
+                                            "Play",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.black),
                                           ),
                                         ),
                                       ],
