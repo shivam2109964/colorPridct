@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:strive/Services/SignUp%20-%201/src/screen/SignUp.dart';
+import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
-class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+class SignUp extends StatelessWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = ScreenSize.width(context);
-    double screenHeight = ScreenSize.height(context);
+    double screenHeigth = ScreenSize.height(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -16,7 +16,7 @@ class SignIn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: screenHeight * 0.7,
+              height: screenHeigth * 0.7,
               width: screenWidth * 1,
               decoration: const BoxDecoration(color: Colors.black),
               child: Padding(
@@ -47,7 +47,7 @@ class SignIn extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                "Login to your Account",
+                                "Create your Account",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -70,16 +70,27 @@ class SignIn extends StatelessWidget {
                                 labelText: "Password",
                                 border: OutlineInputBorder()),
                           ),
-                        )
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 8.0),
+                          child: TextField(
+                            obscureText: true,
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              labelText: "Confirm Password",
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(
                       width: screenWidth * 0.4,
-                      height: screenHeight * 0.06,
+                      height: screenHeigth * 0.06,
                       child: ElevatedButton(
                         onPressed: () {},
                         child: const Text(
-                          "Sign in",
+                          "Sign up",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -91,11 +102,16 @@ class SignIn extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp(),),);
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignIn(),
+                              ),
+                            );
                           },
                           child: const Text(
-                            "Don't have a account? ",
+                            "Already have account? ",
                             style: TextStyle(fontSize: 15, color: Colors.white),
                           ),
                         ),
@@ -104,12 +120,12 @@ class SignIn extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SignUp(),
+                                builder: (context) => const SignIn(),
                               ),
                             );
                           },
                           child: const Text(
-                            "Sign up",
+                            "Sign in",
                             style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
