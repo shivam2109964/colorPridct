@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:strive/Services/Home%20-%203/src/screens/home.dart';
+import 'package:strive/Services/Bottom%20Navi%20-%203/src/screens/Navigation.dart';
 import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
@@ -93,7 +93,7 @@ class SignUp extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const homePage(),
+                              builder: (context) => const BottomMenu(),
                             ),
                           );
                         },
