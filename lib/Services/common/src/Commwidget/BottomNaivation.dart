@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:strive/Services/Bottom%20Navi%20-%203/src/screens/home.dart';
+import 'package:strive/Services/HomeScreen%20-%203/src/screens/home.dart';
 import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 import 'package:strive/Services/SignUp%20-%201/src/screen/SignUp.dart';
 

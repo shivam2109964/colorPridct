@@ -118,23 +118,42 @@ class homePage extends StatelessWidget {
                         ),
                       ),
                       //Modify Seond Card
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Row(
-                            
                             children: <Widget>[
-                              CircleAvatar(
-                                maxRadius: 110,
+                              const CircleAvatar(
+                                maxRadius: 84,
                                 backgroundColor: Colors.transparent,
                                 backgroundImage: AssetImage(
                                   'assets/images/homeImgTwo.png',
                                 ),
                               ),
-                              Text("Start Game",style: TextStyle(fontSize: 30,color: Colors.white),)
+                              Padding(
+                                padding: const EdgeInsets.only(left: 30),
+                                child: SizedBox(
+                                  height: 50,
+                                  width: 140,
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(iconColor:MaterialStateProperty.all(Colors.black)),
+                                    onPressed: () {},
+                                    child: const Row(
+                                      children: [
+                                       Icon(Icons.gamepad_outlined),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: Text(
+                                            "Play",style: TextStyle(fontSize: 18, color: Colors.black),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
                           ),
-                          
                         ],
                       ),
                     ),

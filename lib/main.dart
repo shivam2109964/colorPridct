@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SignIn(),
     );
