@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:strive/Services/Home%20-%203/src/screens/home.dart';
 import 'package:strive/Services/SignIN%20-%202/src/screen/SignIn.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
@@ -88,7 +89,14 @@ class SignUp extends StatelessWidget {
                       width: screenWidth * 0.4,
                       height: screenHeigth * 0.06,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const homePage(),
+                            ),
+                          );
+                        },
                         child: const Text(
                           "Sign up",
                           style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:strive/Services/Home%20-%203/src/screens/home.dart';
 import 'package:strive/Services/SignUp%20-%201/src/screen/SignUp.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
@@ -77,7 +78,14 @@ class SignIn extends StatelessWidget {
                       width: screenWidth * 0.4,
                       height: screenHeight * 0.06,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (contex) => const homePage(),
+                            ),
+                          );
+                        },
                         child: const Text(
                           "Sign in",
                           style: TextStyle(
@@ -91,8 +99,13 @@ class SignIn extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp(),),);
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignUp(),
+                              ),
+                            );
                           },
                           child: const Text(
                             "Don't have a account? ",
