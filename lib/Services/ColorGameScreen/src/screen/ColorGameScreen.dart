@@ -165,6 +165,75 @@ class ColorGame extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                //Now Create a second Container for result
+                Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: Container(
+                    height: screenHeight * 0.6,
+                    width: screenHeight * 1,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          30,
+                        ),
+                      ),
+                      color: Colors.white,
+                    ),
+                    //Inside container more widgets
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(
+                            10,
+                          ),
+                          // Result Bar
+                          child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(
+                                    30,
+                                  ),
+                                ),
+                                color: Colors.blue.shade100,
+                              ),
+                              //Colors Dot for the showing end result
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: Colors.yellow,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: Colors.yellow,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: Colors.yellow,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),
