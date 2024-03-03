@@ -190,46 +190,52 @@ class ColorGame extends StatelessWidget {
                           ),
                           // Result Bar
                           child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(
-                                    30,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(
+                                  30,
+                                ),
+                              ),
+                              color: Colors.blue.shade100,
+                            ),
+                            //Colors Dot for the showing end result
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: Colors.red,
                                   ),
                                 ),
-                                color: Colors.blue.shade100,
-                              ),
-                              //Colors Dot for the showing end result
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.yellow,
-                                    ),
+                                Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: Colors.green,
                                   ),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.yellow,
-                                    ),
+                                ),
+                                Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: Colors.deepPurple,
                                   ),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.yellow,
-                                    ),
-                                  ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
