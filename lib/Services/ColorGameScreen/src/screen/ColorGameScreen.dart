@@ -127,7 +127,21 @@ class ColorGame extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const SimpleDialog(
+                                      title: Text("Join Red"),
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.all(25),
+                                          child: Text("Hello Again"),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                                 child: const Text(
                                   "Red",
                                   style: TextStyle(
@@ -139,7 +153,21 @@ class ColorGame extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const SimpleDialog(
+                                      title: Text("Join Violet"),
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.all(25),
+                                          child: Text("Hello Again"),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                                 child: const Text(
                                   "Violet",
                                   style: TextStyle(
@@ -151,7 +179,21 @@ class ColorGame extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const SimpleDialog(
+                                      title: Text("Join Green"),
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.all(25),
+                                          child: Text("Hello Again"),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
                                 child: const Text(
                                   "Green",
                                   style: TextStyle(
@@ -234,6 +276,31 @@ class ColorGame extends StatelessWidget {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                        ),
+                        //Timer Container
+                        Padding(
+                          padding: const EdgeInsets.all(
+                            5,
+                          ),
+                          child: Container(
+                            height: 50,
+                            width: 120,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(
+                                  30,
+                                ),
+                              ),
+                              color: Color.fromARGB(134, 20, 19, 19),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "00:59",
+                                style: TextStyle(
+                                    fontSize: 30, color: Colors.yellowAccent),
+                              ),
                             ),
                           ),
                         ),
