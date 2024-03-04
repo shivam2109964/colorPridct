@@ -1,8 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:strive/Services/ColorGameScreen/src/models/colorBackend.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ColorGame extends StatelessWidget {
-  const ColorGame({Key? key}) : super(key: key);
+class ColorGame extends StatefulWidget {
+  const ColorGame({super.key});
+  @override
+  State<ColorGame> createState() => _ColorGameState();
+}
+
+class _ColorGameState extends State<ColorGame> {
+  ColorPridect colorPridect = ColorPridect();
+
+  int group1Tokens = 0;
+  int gorup2Tokesn = 0;
+  bool isTimeRunning = false;
+  int _start = 60;
+  late Timer? _timer;
+  int get start => _start;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((prefs) {
+      int startTime =
+          prefs.getInt('startTime') ?? DateTime.now().millisecondsSinceEpoch;
+      int currentTime = DateTime.now().millisecondsSinceEpoch;
+      int elapsedTime = currentTime - startTime;
+      int remainingTime = 60 - (elapsedTime ~/ 1000) % 60;
+      setState(() {
+        _start = remainingTime;
+      });
+      startTimer();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void startTimer() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int startTime =
+        prefs.getInt('startTime') ?? DateTime.now().millisecondsSinceEpoch;
+    prefs.setInt('startTime', startTime);
+    int currentTime = DateTime.now().millisecondsSinceEpoch;
+    int elapsedTime = currentTime - startTime;
+    int remainingTime = 60 - (elapsedTime ~/ 1000) % 60;
+    _start = remainingTime;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_start == 0) {
+        setState(() {
+          isTimeRunning = true;
+          _start = 59;
+        });
+      } else {
+        setState(() {
+          _start--;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -526,10 +587,10 @@ class ColorGame extends StatelessWidget {
                                 ),
                                 color: Color.fromARGB(134, 20, 19, 19),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  "00:59",
-                                  style: TextStyle(
+                                  '00:$start',
+                                  style: const TextStyle(
                                       fontSize: 30, color: Colors.yellowAccent),
                                 ),
                               ),
@@ -541,8 +602,9 @@ class ColorGame extends StatelessWidget {
                             ),
                             child: Container(
                               height: screenHeight * 0.2,
-                              width:  screenWidth * 1,
-                              decoration: const BoxDecoration(color: Colors.amber),
+                              width: screenWidth * 1,
+                              decoration:
+                                  const BoxDecoration(color: Colors.amber),
                             ),
                           ),
                         ],
