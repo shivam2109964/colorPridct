@@ -362,7 +362,7 @@ class _ColorGameState extends State<ColorGame> {
                                                     ],
                                                   ),
                                                 ),
-                                                 SizedBox(
+                                                SizedBox(
                                                   height: 50,
                                                   width: 100,
                                                   child: ElevatedButton(
@@ -455,7 +455,7 @@ class _ColorGameState extends State<ColorGame> {
                                                     ],
                                                   ),
                                                 ),
-                                                 SizedBox(
+                                                SizedBox(
                                                   height: 50,
                                                   width: 100,
                                                   child: ElevatedButton(
@@ -592,8 +592,13 @@ class _ColorGameState extends State<ColorGame> {
                             child: Container(
                               height: screenHeight * 0.2,
                               width: screenWidth * 1,
-                              decoration:
-                                  const BoxDecoration(color: Colors.amber),
+                              decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      30,
+                                    ),
+                                  ),
+                                  color: Colors.amber),
                             ),
                           ),
                         ],
