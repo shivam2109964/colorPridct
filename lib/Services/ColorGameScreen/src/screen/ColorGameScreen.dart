@@ -11,8 +11,22 @@ class ColorGame extends StatefulWidget {
 }
 
 class _ColorGameState extends State<ColorGame> {
-  ColorPridect colorPridect = ColorPridect();
+  //Controller for when user press on Buy Button then in Dialog Widget its show total amount
+  final TextEditingController _controller = TextEditingController();
 
+  int _result = 0;
+
+  void _calculateResult() {
+    String input = _controller.text;
+    int result = int.tryParse(input) ?? 0;
+    result *= 10;
+    setState(() {
+      _result = result;
+    });
+  }
+
+  ColorPridect colorPridect = ColorPridect();
+//This is for timer
   int group1Tokens = 0;
   int gorup2Tokesn = 0;
   bool isTimeRunning = false;
@@ -38,6 +52,7 @@ class _ColorGameState extends State<ColorGame> {
 
   @override
   void dispose() {
+    //Controller for calculate total amount of Dailog box
     _timer?.cancel();
     super.dispose();
   }
@@ -64,6 +79,7 @@ class _ColorGameState extends State<ColorGame> {
       }
     });
   }
+  //That's it
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +211,11 @@ class _ColorGameState extends State<ColorGame> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SimpleDialog(
-                                        title: const Text("Join Red"),
+                                        title: const Center(
+                                            child: Text(
+                                          "Join Red",
+                                          style: TextStyle(fontSize: 25),
+                                        )),
                                         children: <Widget>[
                                           const Divider(
                                             color: Colors.red,
@@ -209,70 +229,57 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                const Row(
+                                                Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    Text(
+                                                    const Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
-                                                          fontSize: 15),
+                                                          fontSize: 22),
                                                     ),
                                                     SizedBox(
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
+                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: TextStyle(
-                                                            fontSize: 15),
+                                                        style: const TextStyle(
+                                                            fontSize: 22),
+                                                        //Calculate Dialog Box Total Amount
                                                       ),
-                                                    )
+                                                    ),
                                                   ],
                                                 ),
                                                 const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
+                                                  padding: EdgeInsets.all(15),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        "1 Lot = ₹10",
+                                                        style: TextStyle(
+                                                            fontSize: 15),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
-                                                const Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      "Total Amount",
-                                                      style: TextStyle(
-                                                          fontSize: 15),
-                                                    ),
-                                                    Text(
-                                                      "₹50",
+                                                SizedBox(
+                                                  height: 50,
+                                                  width: 100,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: const Text(
+                                                      "Buy",
                                                       style: TextStyle(
                                                           fontSize: 20),
                                                     ),
-                                                  ],
-                                                ),
-                                                const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child: const Text(
-                                                        "Buy",
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -297,7 +304,11 @@ class _ColorGameState extends State<ColorGame> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SimpleDialog(
-                                        title: const Text("Join Violet"),
+                                        title: const Center(
+                                            child: Text(
+                                          "Join Violet",
+                                          style: TextStyle(fontSize: 25),
+                                        )),
                                         children: <Widget>[
                                           const Divider(
                                             color: Colors.deepPurple,
@@ -311,70 +322,57 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                const Row(
+                                                Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    Text(
+                                                    const Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
-                                                          fontSize: 15),
+                                                          fontSize: 22),
                                                     ),
                                                     SizedBox(
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
+                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: TextStyle(
-                                                            fontSize: 15),
+                                                        style: const TextStyle(
+                                                            fontSize: 22),
+                                                        //Calculate Dialog Box Total Amount
                                                       ),
-                                                    )
+                                                    ),
                                                   ],
                                                 ),
                                                 const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
+                                                  padding: EdgeInsets.all(15),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        "1 Lot = ₹10",
+                                                        style: TextStyle(
+                                                            fontSize: 15),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
-                                                const Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      "Total Amount",
-                                                      style: TextStyle(
-                                                          fontSize: 15),
-                                                    ),
-                                                    Text(
-                                                      "₹50",
+                                                 SizedBox(
+                                                  height: 50,
+                                                  width: 100,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: const Text(
+                                                      "Buy",
                                                       style: TextStyle(
                                                           fontSize: 20),
                                                     ),
-                                                  ],
-                                                ),
-                                                const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child: const Text(
-                                                        "Buy",
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -399,7 +397,11 @@ class _ColorGameState extends State<ColorGame> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SimpleDialog(
-                                        title: const Text("Join Green"),
+                                        title: const Center(
+                                            child: Text(
+                                          "Join Green",
+                                          style: TextStyle(fontSize: 25),
+                                        )),
                                         children: <Widget>[
                                           const Divider(
                                             color: Colors.green,
@@ -413,70 +415,57 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                const Row(
+                                                Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    Text(
+                                                    const Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
-                                                          fontSize: 15),
+                                                          fontSize: 22),
                                                     ),
                                                     SizedBox(
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
+                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: TextStyle(
-                                                            fontSize: 15),
+                                                        style: const TextStyle(
+                                                            fontSize: 22),
+                                                        //Calculate Dialog Box Total Amount
                                                       ),
-                                                    )
+                                                    ),
                                                   ],
                                                 ),
                                                 const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
+                                                  padding: EdgeInsets.all(15),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        "1 Lot = ₹10",
+                                                        style: TextStyle(
+                                                            fontSize: 15),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
-                                                const Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      "Total Amount",
-                                                      style: TextStyle(
-                                                          fontSize: 15),
-                                                    ),
-                                                    Text(
-                                                      "₹50",
+                                                 SizedBox(
+                                                  height: 50,
+                                                  width: 100,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: const Text(
+                                                      "Buy",
                                                       style: TextStyle(
                                                           fontSize: 20),
                                                     ),
-                                                  ],
-                                                ),
-                                                const Padding(
-                                                  padding: EdgeInsets.only(
-                                                    top: 15,
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child: const Text(
-                                                        "Buy",
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
                                               ],
                                             ),
