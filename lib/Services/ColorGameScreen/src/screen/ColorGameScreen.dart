@@ -11,20 +11,6 @@ class ColorGame extends StatefulWidget {
 }
 
 class _ColorGameState extends State<ColorGame> {
-  //Controller for when user press on Buy Button then in Dialog Widget its show total amount
-  final TextEditingController _controller = TextEditingController();
-
-  int _result = 0;
-
-  void _calculateResult() {
-    String input = _controller.text;
-    int result = int.tryParse(input) ?? 0;
-    result *= 10;
-    setState(() {
-      _result = result;
-    });
-  }
-
   ColorPridect colorPridect = ColorPridect();
 //This is for timer
   int group1Tokens = 0;
@@ -52,7 +38,6 @@ class _ColorGameState extends State<ColorGame> {
 
   @override
   void dispose() {
-    //Controller for calculate total amount of Dailog box
     _timer?.cancel();
     super.dispose();
   }
@@ -229,12 +214,12 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                Row(
+                                                const Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    const Text(
+                                                    Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
                                                           fontSize: 22),
@@ -243,11 +228,10 @@ class _ColorGameState extends State<ColorGame> {
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
-                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             fontSize: 22),
                                                         //Calculate Dialog Box Total Amount
                                                       ),
@@ -322,12 +306,12 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                Row(
+                                                const Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    const Text(
+                                                    Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
                                                           fontSize: 22),
@@ -336,11 +320,10 @@ class _ColorGameState extends State<ColorGame> {
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
-                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             fontSize: 22),
                                                         //Calculate Dialog Box Total Amount
                                                       ),
@@ -415,12 +398,12 @@ class _ColorGameState extends State<ColorGame> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                Row(
+                                                const Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: <Widget>[
-                                                    const Text(
+                                                    Text(
                                                       "Enter Lot",
                                                       style: TextStyle(
                                                           fontSize: 22),
@@ -429,11 +412,10 @@ class _ColorGameState extends State<ColorGame> {
                                                       width: 40,
                                                       height: 40,
                                                       child: TextField(
-                                                        controller: _controller,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             fontSize: 22),
                                                         //Calculate Dialog Box Total Amount
                                                       ),
