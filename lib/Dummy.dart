@@ -1,49 +1,112 @@
 import 'package:flutter/material.dart';
 
-class Dummy extends StatefulWidget {
-  const Dummy({super.key});
-  @override
-  State<Dummy> createState() => _DummyState();
+void main() {
+  runApp(TransactionApp());
 }
 
-class _DummyState extends State<Dummy> {
-   TextEditingController _controller = TextEditingController();
-  int _result = 0;
+class TransactionApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Transaction App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TransactionPage(),
+    );
+  }
+}
 
-  void _calculateResult() {
-    String input = _controller.text;
-    int result = int.tryParse(input) ?? 0;
-    result *= 10;
+class TransactionPage extends StatefulWidget {
+  @override
+  _TransactionPageState createState() => _TransactionPageState();
+}
+
+class _TransactionPageState extends State<TransactionPage> {
+  double balance = 0;
+
+  TextEditingController amountController = TextEditingController();
+
+  void deposit(double amount) {
     setState(() {
-      _result = result;
+      balance += amount;
     });
+  }
+
+  void withdraw(double amount) {
+    setState(() {
+      if (balance >= amount) {
+        balance -= amount;
+      } else {
+        _showInsufficientBalanceDialog();
+      }
+    });
+  }
+
+  void _showInsufficientBalanceDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Insufficient Balance"),
+          content: Text("You do not have enough balance for this transaction."),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Multiply by 10'),
+        title: Text('Transaction App'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                labelText: 'Enter a number',
-              ),
-              keyboardType: TextInputType.number,
+            Text(
+              'Current Balance:',
             ),
-            ElevatedButton(
-              onPressed: _calculateResult,
-              child: Text('Calculate Result'),
+            Text(
+              '\$$balance',
+              style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
-            Text(
-              'Result: $_result',
-              style: TextStyle(fontSize: 20),
+            TextField(
+              controller: amountController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                hintText: 'Enter amount',
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    double amount = double.tryParse(amountController.text) ?? 0;
+                    deposit(amount);
+                  },
+                  child: Text('Deposit'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    double amount = double.tryParse(amountController.text) ?? 0;
+                    withdraw(amount);
+                  },
+                  child: Text('Withdraw'),
+                ),
+              ],
             ),
           ],
         ),

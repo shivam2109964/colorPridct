@@ -1,11 +1,58 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:strive/Services/ColorGameScreen/src/screen/ColorGameScreen.dart';
 import 'package:strive/Services/common/src/utils/MediaQuary.dart';
 
-class homePage extends StatelessWidget {
+class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
+  @override
+  State<homePage> createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+  //For Balance update
+  double balance = 20;
+
+  TextEditingController amountController = TextEditingController();
+
+  void deposit(double amount) {
+    setState(() {
+      balance += amount;
+    });
+  }
+
+  void withdra(double amount) {
+    setState(() {
+      if (balance >= amount) {
+        balance -= amount;
+      } else {
+        _showInsufficientAmountDialog();
+      }
+    });
+  }
+
+  //Balance Dialog Box
+  void _showInsufficientAmountDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Insufficient Balance"),
+          content: const Text("You do not have enough balance."),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Ok"))
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,31 +120,88 @@ class homePage extends StatelessWidget {
                         ),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          //Inside Card a container for Money Value
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //For Balance and Card Info
                           Container(
-                            width: screenWidth * 0.45,
                             height: screenHeight * 0.24,
-                            decoration:
-                                const BoxDecoration(color: Colors.transparent),
-                            child: const Center(
-                              child: Text(
-                                "₹5000 +",
-                                style: TextStyle(
-                                    fontSize: 50,
-                                    color: Colors.lightGreenAccent),
+                            width: screenWidth * 0.49,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(45)),
+                                color: Colors.transparent),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Text(
+                                  "Earning",
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.white),
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 40,
+                                  width: 90,
+                                  decoration: const BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      color: Color.fromARGB(179, 35, 0, 45)),
+                                  child: const Text(
+                                    "₹5000+",
+                                    style: TextStyle(
+                                        fontSize: 25, color: Colors.green),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                  ),
+                                  child: Column(
+                                    children: <Widget>[
+                                      const Text(
+                                        "Balance",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 40,
+                                        width: 90,
+                                        decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            color:
+                                                Color.fromARGB(179, 35, 0, 45)),
+                                        child: Text(
+                                          "₹$balance",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.yellow),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          //For Image
+                          Container(
+                            height: screenHeight * 0.24,
+                            width: screenWidth * 0.4,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(45)),
+                                color: Colors.transparent),
+                            child: const CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage(
+                                'assets/images/ruppes.png',
                               ),
                             ),
                           ),
-                          // Inside Card a container for Image
-                          Container(
-                            width: screenWidth * 0.45,
-                            height: screenHeight * 0.24,
-                            decoration:
-                                const BoxDecoration(color: Colors.transparent),
-                            child: Image.asset("assets/images/ruppes.png"),
-                          )
                         ],
                       ),
                     ),
@@ -124,15 +228,19 @@ class homePage extends StatelessWidget {
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              const CircleAvatar(
-                                maxRadius: 84,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage(
-                                  'assets/images/homeImgTwo.png',
+                              const SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: CircleAvatar(
+                                  maxRadius: 84,
+                                  backgroundColor: Colors.transparent,
+                                  backgroundImage: AssetImage(
+                                    'assets/images/icon.png',
+                                  ),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 30),
+                                padding: const EdgeInsets.only(left: 5),
                                 child: SizedBox(
                                   height: 50,
                                   width: 140,
